@@ -5,10 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body .wrap-body {
+        background: #ffffff;
+        margin: 30px auto;
+        padding: 30px 40px;
+    }
+    .zerogrid {
+        width: 960px;
+        position: relative;
+        margin: 0 auto;
+        padding: 0px;
+    }
+    #cre {
+        background-color: #8EE5EE;
+        -moz-box-shadow: 4px 4px 3px 3px #DCDCDC;
+        -webkit-box-shadow: 5px 4px 3px 3px #dcdcdc;
+        box-shadow: 4px 4px 3px 3px #dcdcdc;
+        width: 460px;
+        padding: 14px 0 10px 24px;
+    }
+    </style>
 </head>
+<body style="background-color: #E5E5E5;">
+    <div class="wrap-body zerogrid">
 
-    <body style="background-color: #E5E5E5;">
-        <div class="wrap-body zerogrid">
+    <div id="cre">
         <form method="post" action="/deptsem">
             <select id="dept" name="dept">
                        <option value="">Select Dept...</option>
@@ -40,7 +62,32 @@
                   </select>                 
                        <input type="submit" class="buttongm" onsubmit="dis();" value="submit">
         </form>
-        </div>
-        
+    <form action="/calc" method="post">  
+        <input type="number" name="nsize" value="{{nsize}}">
+        {% for nsize in range(nsize) %}
+        <p><heading><span class="subjectname">{{sub[nsize]}}</span></heading> </p>
+    
+           Credit:<input size="7" type="number" name="c{{nsize}}" class="input" value="{{cre[nsize]}}" required="required">
+            Grade: <select name="grade{{nsize}}">
+    <option value="o">O</option>
+    <option value="a+">A+</option>
+    <option value="a">A</option>
+    <option value="b+">B+</option>
+    <option value="b">B</option>
+    <option value="ra">RA</option>
+    <option value="sa">SA</option>
+    <option value="w">W</option>
+    <option value="AB">AB</option>
+    
+    </select> <br>
+    {% endfor %}
+           
+    
+            <input type="hidden" name="nos" value="9"> <!-- No of time -->
+            <br>
+                     <center><input type="submit" class="buttongm" value="Calculate"></center>
+                 </form>
+    </div>
+    </div>
 </body>
 </html>
